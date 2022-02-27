@@ -9,19 +9,9 @@ namespace Computer.Components.MotherBoards
 {
     public class MsiMotherBoard : MotherBoard
     {
-        public int MemorySlotsCount { get; private set; }
-
-        public MsiMotherBoard(string name, string manufacturer, Processor processor, int memorySlotsCount) : base(name, manufacturer, processor)
+        public MsiMotherBoard() 
+            : base("MSI" , "B560M PRO-E", "mATX", "LGA 1200", "Intel B560", 3200, 2, 64, true)
         {
-            if (memorySlotsCount < 1)
-                throw new ArgumentOutOfRangeException(nameof(memorySlotsCount));
-            MemorySlotsCount = memorySlotsCount;
-        }
-
-        public override void GetConfiguration()
-        {
-            Console.WriteLine($"Memory slots: {MemorySlotsCount}");
-            base.GetConfiguration();
         }
     }
 }

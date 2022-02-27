@@ -2,7 +2,6 @@
 {
     public interface IComponent
     {
-        string Name { get; }
         public void GetConfiguration();
     }
 }

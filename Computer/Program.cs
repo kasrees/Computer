@@ -1,5 +1,8 @@
 ﻿using Computer.Components.MotherBoards;
+using Computer.Components.PowerUnit;
 using Computer.Components.Processors;
+using Computer.Components.RandomAccessMemory;
+using Computer.Components.VideoCard;
 
 namespace Computer
 {
@@ -7,11 +10,17 @@ namespace Computer
     {
         public static void Main(string[] args)
         {
-            Processor processor = new IntelProcessor("Processor", "Intel", 2.4, 2, 3, "100H");
-            MotherBoard motherBoard = new MsiMotherBoard("MotherBoard", "MSI", processor, 2);
-
-            Computer computer = new Computer(motherBoard);
-
+            MotherBoard motherBoard = new MsiMotherBoard();
+            Processor processor = new IntelProcessor();
+            VideoCard videoCard = new PalitVideoCard();
+            List<RandomAccessMemory> ramList = new List<RandomAccessMemory>()
+            {
+                new LenovoRandomAccessMemory(),
+                new LenovoRandomAccessMemory()
+            };
+            PowerUnit powerUnit = new AeorocoolPowerUnit();
+            
+            Computer computer = new Computer(motherBoard, processor, videoCard, ramList, powerUnit, "mATX");
             computer.GetConfiguration();
         }
     }
